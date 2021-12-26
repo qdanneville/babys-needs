@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;650;900&display=swap.css');
+
+body,
+html {
+    font-family            : 'Roboto', sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing : antialiased;
+    font-smoothing         : antialiased;
+}
+
+body,
+html,
+#root,
+.App {
+    width : 100%;
+    height: 100%;
+
+    padding: 0;
+    margin : 0;
+}
+
+@dark-pink   : #FFCACA;
+@pink        : #FFE9E9;
+@light-maroon: #CAA0A0;
+@maroon      : #935C29;
+@dark        :#545050;
+@blue        : #175c6e;
+
+.App {
+    display        : flex;
+    justify-content: space-between;
+
+    @media only screen and (max-width: 650px) {
+        flex-direction: column;
+    }
+
+    section {
+        width : 50%;
+        height: 100%;
+
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+
+        background-color: @dark-pink;
+
+        +section {
+            background-color: @pink;
+        }
+
+        @media only screen and (max-width: 650px) {
+            width : 100%;
+            height: 50%;
+        }
+    }
+}
+
+section {
+    position: relative;
+
+    header {
+        position       : relative;
+        display        : flex;
+        justify-content: center;
+        text-align     : center;
+
+        width         : 50%;
+        height        : 0;
+        padding-bottom: 50%;
+
+        background-color: @pink;
+        border-radius   : 50%;
+
+        @media only screen and (max-width: 650px) {
+            width         : 40%;
+            padding-bottom: 40%;
+        }
+
+        h1 {
+            font-size: 10vw;
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+            transform: translate3d(-50%, -50%, 0);
+            margin   : 0;
+
+            @media only screen and (max-width: 650px) {
+                font-size: 25vw;
+            }
+
+            // @media only screen and (max-width: 600px) {
+            //     transform: translate3d(0, -40px, 0);
+            // }
+        }
+    }
+
+    &.change {
+        header {
+            background-color: @dark-pink;
+        }
+    }
+}
+
+main {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    text-align     : center;
+
+    margin: 20px 0;
+
+    span {
+        font-size     : 25pt;
+        text-transform: capitalize;
+        font-weight   : 400;
+        color         : @light-maroon;
+
+        @media only screen and (max-width: 650px) {
+            font-size: 15pt;
+        }
+    }
+
+    time {
+        margin-top: 10px;
+
+        font-size: 15pt + 20vw;
+        color    : white;
+
+        padding         : 5px 10px;
+        border-radius   : 4px;
+        background-color: rgba(0, 0, 0, 0.2);
+
+        @media only screen and (max-width: 650px) {
+            font-size: 15pt + 10vw;
+        }
+    }
+
+    p {
+        font-size  : 30pt;
+        font-weight: 300;
+
+        color: @dark;
+
+        strong {
+            font-weight: 400;
+        }
+
+        @media only screen and (max-width: 650px) {
+            display: none;
+        }
+    }
+}
+
+.poo {
+    position: absolute;
+    bottom  : 10px;
+
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+
+    time {
+        color      : @maroon;
+        font-size  : 15pt;
+        font-weight: 650;
+    }
+
+    p {
+        margin     : 0;
+        margin-left: 10px;
+        padding    : 0;
+        font-size  : 25pt;
+    }
+
+    @media only screen and (max-width: 650px) {
+        right : 10px;
+        bottom: 0;
+    }
+}
+
+.modal-wrapper {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+
+    width : 100%;
+    height: 100%;
+
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+
+    .modal-background {
+        position: absolute;
+
+        top : 0;
+        left: 0;
+
+        width : 100%;
+        height: 100%;
+
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-inner {
+        position: relative;
+
+        height    : 70%;
+        max-width : 100vw;
+        max-height: 100vh;
+
+        padding: 10px 20px;
+
+        border-radius   : 6px;
+        background-color: white;
+        overflow        : hidden;
+
+        @media only screen and (max-width: 650px) {
+            height: 85%;
+        }
+    }
+}
+
+.modal-inner {
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items    : center;
+
+    .choices {
+        display : flex;
+        position: absolute;
+
+        top : 0;
+        left: 0;
+
+        width : 100%;
+        height: 100%;
+
+        div {
+            width : 50%;
+            height: 100%;
+
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+
+            font-size  : 25pt;
+            font-weight: 700;
+            color      : @light-maroon;
+
+            background-color: @dark-pink;
+
+            +div {
+                background-color: @pink;
+            }
+
+            &:hover {
+                color: white;
+
+                cursor          : pointer;
+                background-color: darken(@dark-pink, 5%);
+            }
+        }
+    }
+
+    header {
+        pointer-events : none;
+        position       : relative;
+        display        : flex;
+        justify-content: center;
+        text-align     : center;
+
+        width         : 50%;
+        height        : 0;
+        padding-bottom: 50%;
+
+        background-color: white;
+        border-radius   : 50%;
+
+        margin-top: 20px;
+
+        h1 {
+            font-size: 10vw;
+            position : absolute;
+            top      : 50%;
+            left     : 50%;
+            transform: translate3d(-50%, -50%, 0);
+            margin   : 0;
+
+            @media only screen and (max-width: 650px) {
+                font-size: 25vw;
+            }
+        }
+
+        h2 {
+            margin-top : 270%;
+            font-size  : 20pt;
+            font-weight: 300;
+            color      : @blue;
+        }
+    }
+
+    h2 {
+        z-index: 1;
+    }
+
+    header,
+    form {
+        z-index       : 1;
+        display       : flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items    : center;
+
+        .form-choices {
+            display        : flex;
+            justify-content: space-around;
+
+            padding: 10px 0;
+
+        }
+    }
+
+    form {
+        width         : 100%;
+        padding-bottom: 15px;
+
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius   : 5px;
+    }
+}
