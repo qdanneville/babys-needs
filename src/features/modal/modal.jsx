@@ -15,17 +15,12 @@ export function Modal({ options, closeModal }) {
         closeModal();
     }
 
-    let now = new Date().toISOString()
-    let dateLength = now.length
-    now = new Date().toISOString().slice(0, dateLength - 5)
-
     return (
         <div className='modal-wrapper'>
             <div onClick={closeModal} className='modal-background'></div>
             <div className='modal-inner'>
                 <header>
                     <h1>{options.icon}</h1>
-                    <h2>{options.text}</h2>
                 </header>
                 <div className='choices'>
                     {options.choices?.map(choice => {
@@ -38,7 +33,7 @@ export function Modal({ options, closeModal }) {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <p>Or select a <strong>date</strong></p>
-                    <input max={now} required onChange={(e) => setDate(new Date(e.target.value))} type="datetime-local"></input>
+                    <input required onChange={(e) => setDate(new Date(e.target.value))} type="datetime-local"></input>
                     <div className='form-choices'>
                         {options.choices?.map((choice, i) => {
                             return (
